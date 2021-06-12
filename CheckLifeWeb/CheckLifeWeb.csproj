@@ -1,0 +1,64 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+    <ApplicationIcon />
+    <OutputType>WinExe</OutputType>
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\PacientesPrueba\**" />
+    <Content Remove="Views\PacientesPrueba\**" />
+    <EmbeddedResource Remove="Views\PacientesPrueba\**" />
+    <None Remove="Views\PacientesPrueba\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\PacientesPruebaController.cs" />
+    <Compile Remove="Migrations\20210607205208_Migracion20210607_1752.cs" />
+    <Compile Remove="Migrations\20210607205208_Migracion20210607_1752.Designer.cs" />
+    <Compile Remove="Migrations\20210607205519_Migracion20210607_1754.cs" />
+    <Compile Remove="Migrations\20210607205519_Migracion20210607_1754.Designer.cs" />
+    <Compile Remove="Migrations\20210607211929_Migracion20210607_1820.cs" />
+    <Compile Remove="Migrations\20210607211929_Migracion20210607_1820.Designer.cs" />
+    <Compile Remove="Migrations\20210607215925_Migracion20210607_1850.cs" />
+    <Compile Remove="Migrations\20210607215925_Migracion20210607_1850.Designer.cs" />
+    <Compile Remove="Migrations\20210607233815_Migracion20210607_2040.cs" />
+    <Compile Remove="Migrations\20210607233815_Migracion20210607_2040.Designer.cs" />
+    <Compile Remove="Migrations\20210608142321_Migracion20210608_1125.cs" />
+    <Compile Remove="Migrations\20210608142321_Migracion20210608_1125.Designer.cs" />
+    <Compile Remove="Models\Enfermero.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.15">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Login\Index.cshtml" />
+    <None Include="Views\Login\Registrar.cshtml" />
+    <None Include="Views\Login\RegistrarMedico.cshtml" />
+    <None Include="Views\Login\RegistrarOK.cshtml" />
+    <None Include="Views\Login\RegistrarPaciente.cshtml" />
+    <None Include="Views\Login\RegistrarVacunatorio.cshtml" />
+    <None Include="Views\Medicos\Index.cshtml" />
+    <None Include="Views\Medicos\Pacientes.cshtml" />
+    <None Include="Views\Medicos\Perfil.cshtml" />
+    <None Include="Views\Pacientes\Index.cshtml" />
+    <None Include="Views\Pacientes\Perfil.cshtml" />
+    <None Include="Views\Pacientes\Vacunas.cshtml" />
+    <None Include="Views\Vacunatorios\CentrosDeVacunacion.cshtml" />
+    <None Include="Views\Vacunatorios\Index.cshtml" />
+    <None Include="wwwroot\img\container\cronograma-de-vacunacion.webp" />
+  </ItemGroup>
+
+</Project>

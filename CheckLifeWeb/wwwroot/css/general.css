@@ -1,0 +1,58 @@
+﻿html {
+    
+    overflow: scroll;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    background: none !important;
+}
+
+
+.divTitulos{
+    text-align: center;
+    color: #777;
+}
+
+.wl-container {
+    height: 190px;
+    padding: 8px 16px;
+}
+
+.wl-text {
+}
+
+.wl-button {
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.wl-block {
+    display: block;
+    width: 100%;
+}
+
+.wl-color {
+    color: #fff !important;
+    background-color: #00b1b9 !important
+}
+
+.wl-icono {
+    height: 20px;
+}
+
+.carousel-item {
+    height: 40vh;
+}
+

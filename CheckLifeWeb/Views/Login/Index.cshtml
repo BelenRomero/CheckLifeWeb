@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Ingresar";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/estilos.css">
+    <link rel="stylesheet" href="~/css/general.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="~/js/site.js"></script>
+    <title>Login</title>
+</head>
+<body>
+    <div class="login">
+        <div class="login-screen">
+            <div class="container ">
+                <div class="container bg-1 text-center">
+                    <img src="~/Img/candado.png" class="img-circle" alt="Bird" width="150" height="150">
+                    <div class="app-title">
+                        <h2>Ingresar</h2>
+                    </div>
+                </div>
+                @* PARA LA VALIDACION DEL LOGIN *@
+                @if (ViewBag.MsjError != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        @ViewBag.MsjError
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                }
+
+                <div>
+                    <form method="post" action="Login">
+
+                        <div class="form-group">
+                            <label>Usuario</label>
+                            <input id="User" name="User" class="form-control" placeholder="Usuario" type="number" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Contraseña</label>
+                            <input name="Password" class="form-control" placeholder="Contraseña" type="password" />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" class="button" value=" Iniciar sesión" />
+                        </div>
+                    </form>
+                </div>
+
+                <div class="">¿Necesitas una cuenta? <a asp-controller="Login" asp-action="Registrar">Registrarse</a></div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

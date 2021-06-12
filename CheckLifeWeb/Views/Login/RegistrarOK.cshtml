@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Registro Exitoso";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/estilos.css">
+    <link rel="stylesheet" href="~/css/general.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <title>Registrar</title>
+</head>
+<body>
+
+    <div>
+        <div class="login-screen">
+            <div class="container ">
+                <div class="bg-1 text-center">
+                    <img src="~/img/Iconos/check.jpg" class="img-circle" alt="Bird" width="150" height="150">
+                    <div class="app-title">
+                        <h2>Se creo el registro correctamente</h2>
+                    </div>
+                    <a class="btn btn-primary btn-lg" asp-area=""  asp-action="Index">
+                        Ingresar
+                    </a>
+                </div>
+
+                <div class="text-center"><a asp-controller="Home" asp-action="Index">Inicio</a></div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

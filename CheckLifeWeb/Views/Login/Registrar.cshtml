@@ -1,0 +1,85 @@
+﻿@model CheckLifeWeb.Models.Rol;
+@{
+    ViewData["Title"] = "Registrar";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/estilos.css">
+    <link rel="stylesheet" href="~/css/general.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <title>Registrar</title>
+</head>
+<body>
+
+    <div>
+        <div class="login-screen">
+            <div class="container ">
+                <div class="bg-1 text-center">
+                    <img src="~/Img/registro.png" class="img-circle" alt="Bird" width="150" height="150">
+                    <div class="app-title">
+                        <h2>Registrar</h2>
+                    </div>
+                </div>
+                @if (ViewBag.MsjError != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        @ViewBag.MsjError
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                }
+
+
+                <div>
+                    <br />
+                    <form method="post" action="Registrar">
+
+                        <div class="form-group">
+                            <label>Seleccione tipo de Perfil</label>
+                            <select class="form-control" asp-for="ID"
+                                    asp-items="@(new SelectList(ViewBag.Roles, "ID", "Descripcion"))">
+                            </select>
+
+                        </div>
+
+
+                        @*<div class="form-group">
+                    <div id="RadioPerfil">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="ID" id="PerfilMedico" value="1">
+                            <label class="form-check-label" name="Descripcion">Paciente</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="ID" id="PerfilPaciente" value="2">
+                            <label class="form-check-label" name="Descripcion">Medico</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="ID" id="PerfilPaciente" value="3">
+                            <label class="form-check-label" name="Descripcion">Centro de Vacunacion</label>
+                        </div>
+                    </div>
+                </div>*@
+                        <div class="form-group text-center">
+                            <input type="submit"
+                                   class="btn btn-primary btn-lg disabled "
+                                   aria-disabled="true"
+                                   value="Siguiente" />
+                        </div>
+                    </form>
+                </div>
+
+                <div class="text-center"><a asp-controller="Home" asp-action="Index">Volver</a></div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+﻿@model CheckLifeWeb.Models.Paciente
+
+@{
+    ViewData["Title"] = "Perfil Paciente";
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="~/css/general.css">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <title>Perfil</title>
+    </head>
+    <body>
+        <div class="container ">
+            <div class="bg-1 text-center">
+                <img src="~/Img/Iconos/perfilPaciente.jpg" class="img-circle" alt="Bird" width="150" height="150">
+                <div class="divTitulos">
+                    <h2>Perfil</h2>
+                </div>
+            </div>
+            <br />
+
+            <div>
+                <div class="login-screen">
+                    <div>
+                        <form method="post"
+                              onsubmit="return Validar()">
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input id="Nombre"
+                                       name="Nombre"
+                                       class="form-control"
+                                       placeholder="Nombre" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Apellido</label>
+                                <input id="Apellido"
+                                       name="Apellido"
+                                       class="form-control"
+                                       placeholder="Apellido" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>DNI</label>
+                                <input id="DNI"
+                                       name="DNI"
+                                       class="form-control"
+                                       placeholder="DNI" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Fecha de Nacimiento</label>
+                                <input id="FechaNacimiento"
+                                       name="FechaNacimiento"
+                                       class="form-control"
+                                       placeholder="Fecha de Nacimiento"
+                                       type="date" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Edad</label>
+                                <input id="Edad"
+                                       name="Edad"
+                                       class="form-control"
+                                       placeholder="Edad"
+                                       type="number" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Nacionalidad</label>
+                                <input id="Nacionalidad"
+                                       name="Nacionalidad"
+                                       class="form-control"
+                                       placeholder="Nacionalidad" />
+
+                            </div>
+
+                            <div class="form-group">
+                                <label>Perfil</label>
+                                <div id="RadioPerfil" onchange="EvaluarPerfil();">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="PerfilMedico" value="Medico">
+                                        <label class="form-check-label" for="inlineRadio1">Medico</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="PerfilPaciente" value="Paciente">
+                                        <label class="form-check-label" for="inlineRadio2">Paciente</label>
+                                    </div>
+                                </div>
+                                <div class="form-group desactivado" id="Matricula">
+                                    <label>Matricula</label>
+                                    <input name="Matricula"
+                                           class="form-control"
+                                           placeholder="Matricula" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Telefono</label>
+                                <input id="Telefono"
+                                       name="Telefono"
+                                       class="form-control"
+                                       placeholder="Telefono"
+                                       type="tel" />
+
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input name="Email"
+                                       class="form-control"
+                                       placeholder="Email"
+                                       type="email" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Usuario</label>
+                                <input name="User"
+                                       class="form-control"
+                                       placeholder="Usuario" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Contraseña</label>
+                                <input name="Password"
+                                       class="form-control"
+                                       placeholder="Contraseña"
+                                       type="password" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Verificar Contraseña</label>
+                                <input name="PasswordVerification"
+                                       class="form-control"
+                                       placeholder="Verificar Contraseña"
+                                       type="password" />
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit"
+                                       class="btn btn-primary btn-lg disabled" role="button" aria-disabled="true"
+                                       value="Crear" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="text-center">
+                        <a asp-controller="Home" asp-action="Index">Volver</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="text-center"><a asp-action="Index">Volver</a></div>
+
+
+        <script type="text/javascript" src="registroFunciones.js"></script>
+
+    </body>
+</html>

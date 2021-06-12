@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CheckLifeWeb.Models.Vacunatorio>
+
+@{
+     ViewData["Title"] = "Centros de Vacunacion";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/general.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <title>Centros de Vacunacion</title>
+</head>
+<body>
+    <div class="divTitulos">
+        <h2>Centros de Vacunacion</h2>
+    </div>
+        @foreach (var item in Model)
+        {
+            <div class="card mb-3" @*style="max-width: 540px;"*@>
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="~/img/Iconos/Centro.jpg" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                @Html.DisplayFor(modelItem => item.Nombre)
+                            </h5>
+                            <p class="card-text">Direccion: @Html.DisplayFor(modelItem => item.Direccion), @Html.DisplayFor(modelItem => item.Localidad)</p>
+                            <p class="card-text">Tel:  @Html.DisplayFor(modelItem => item.Telefono)</p>
+                            <p class="card-text">Email:  @Html.DisplayFor(modelItem => item.Email)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+</body>
+</html>
+
+
