@@ -31,138 +31,137 @@
             <div>
                 <div class="login-screen">
                     <div>
-                        <form method="post"
-                              onsubmit="return Validar()">
+                        <form method="post" asp-action="EditarPerfil" asp-route-id="@Model.ID">
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input id="Nombre"
-                                       name="Nombre"
-                                       class="form-control"
-                                       placeholder="Nombre" />
+                                @Html.DisplayFor(model => model.Nombre)
                             </div>
 
                             <div class="form-group">
                                 <label>Apellido</label>
-                                <input id="Apellido"
-                                       name="Apellido"
-                                       class="form-control"
-                                       placeholder="Apellido" />
+                                @Html.DisplayFor(model => model.Apellido)
                             </div>
 
                             <div class="form-group">
                                 <label>DNI</label>
-                                <input id="DNI"
-                                       name="DNI"
-                                       class="form-control"
-                                       placeholder="DNI" />
+                                @Html.DisplayFor(model => model.DNI)
                             </div>
 
                             <div class="form-group">
                                 <label>Fecha de Nacimiento</label>
-                                <input id="FechaNacimiento"
-                                       name="FechaNacimiento"
-                                       class="form-control"
-                                       placeholder="Fecha de Nacimiento"
-                                       type="date" />
+                                @Html.DisplayFor(model => model.FechaNacimiento)
                             </div>
 
                             <div class="form-group">
                                 <label>Edad</label>
-                                <input id="Edad"
-                                       name="Edad"
-                                       class="form-control"
-                                       placeholder="Edad"
-                                       type="number" />
+                                @Html.DisplayFor(model => model.Edad)
                             </div>
 
                             <div class="form-group">
                                 <label>Nacionalidad</label>
-                                <input id="Nacionalidad"
-                                       name="Nacionalidad"
-                                       class="form-control"
-                                       placeholder="Nacionalidad" />
+                                @Html.DisplayFor(model => model.Nacionalidad.Descripcion)
 
                             </div>
-
                             <div class="form-group">
-                                <label>Perfil</label>
-                                <div id="RadioPerfil" onchange="EvaluarPerfil();">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="PerfilMedico" value="Medico">
-                                        <label class="form-check-label" for="inlineRadio1">Medico</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="PerfilPaciente" value="Paciente">
-                                        <label class="form-check-label" for="inlineRadio2">Paciente</label>
-                                    </div>
-                                </div>
-                                <div class="form-group desactivado" id="Matricula">
-                                    <label>Matricula</label>
-                                    <input name="Matricula"
-                                           class="form-control"
-                                           placeholder="Matricula" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Telefono</label>
-                                <input id="Telefono"
-                                       name="Telefono"
-                                       class="form-control"
-                                       placeholder="Telefono"
-                                       type="tel" />
-
+                                <label>Telefono:</label>
+                                @Html.DisplayFor(model => model.Telefono)
                             </div>
 
                             <div class="form-group">
                                 <label>Email</label>
-                                <input name="Email"
-                                       class="form-control"
-                                       placeholder="Email"
-                                       type="email" />
-                            </div>
-
-                            <div class="form-group">
-                                <label>Usuario</label>
-                                <input name="User"
-                                       class="form-control"
-                                       placeholder="Usuario" />
-                            </div>
-
-                            <div class="form-group">
-                                <label>Contraseña</label>
-                                <input name="Password"
-                                       class="form-control"
-                                       placeholder="Contraseña"
-                                       type="password" />
-                            </div>
-
-                            <div class="form-group">
-                                <label>Verificar Contraseña</label>
-                                <input name="PasswordVerification"
-                                       class="form-control"
-                                       placeholder="Verificar Contraseña"
-                                       type="password" />
+                                @Html.DisplayFor(model => model.Email)
                             </div>
 
                             <div class="form-group">
                                 <input type="submit"
                                        class="btn btn-primary btn-lg disabled" role="button" aria-disabled="true"
-                                       value="Crear" />
+                                       value="Modificar" />
                             </div>
                         </form>
                     </div>
+
+
+
+
+
+
+
+
+
+                    <dl class="row">
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.DNI)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.DNI)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Nombre)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Nombre)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Apellido)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Apellido)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Edad)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Edad)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.FechaNacimiento)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.FechaNacimiento)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Nacionalidad)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Nacionalidad.ID)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Email)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Email)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Login)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Login.ID)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Telefono)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Telefono)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.MedicoCabecera)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.MedicoCabecera.Apellido)
+                        </dd>
+                    </dl>
+                </div>
+
+
+
                     <div class="text-center">
-                        <a asp-controller="Home" asp-action="Index">Volver</a>
+                        <a asp-action="Index">Volver</a>
                     </div>
                 </div>
 
             </div>
 
         </div>
-
-        <div class="text-center"><a asp-action="Index">Volver</a></div>
-
 
         <script type="text/javascript" src="registroFunciones.js"></script>
 

@@ -12,6 +12,7 @@ namespace CheckLifeWeb.Models
     {
         [Key]
         public int ID { get; set; }
+
         [MaxLength(50)]
         public string Descripcion { get; set; }
     }

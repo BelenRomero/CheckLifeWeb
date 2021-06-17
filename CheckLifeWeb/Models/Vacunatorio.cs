@@ -27,7 +27,7 @@ namespace CheckLifeWeb.Models
 
         public string Email { get; set; }
 
-        public int LoginID { get; set; }
+        public int? LoginID { get; set; }
         public Login Login { get; set; }
 
         //public ICollection<Enfermero> Enfermeros { get; set; }

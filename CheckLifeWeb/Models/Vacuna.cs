@@ -10,7 +10,7 @@ namespace CheckLifeWeb.Models
         [Key]
         public int ID { get; set; }
 
-        public int CalendarioVacunaID { get; set; }
+        public int? CalendarioVacunaID { get; set; }
         public CalendarioVacuna CalendarioVacuna { get; set; }
 
         public DateTime FechaAplicada { get; set; }

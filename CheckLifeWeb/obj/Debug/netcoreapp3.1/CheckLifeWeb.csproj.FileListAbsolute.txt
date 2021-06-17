@@ -431,3 +431,4 @@ C:\Users\LVT3HT613\Desktop\ort\Proyecto NTP DB\CheckLifeWeb\CheckLifeWeb\obj\Deb
 C:\Users\LVT3HT613\Desktop\ort\Proyecto NTP DB\CheckLifeWeb\CheckLifeWeb\obj\Debug\netcoreapp3.1\Razor\Views\Login\RegistrarVacunatorio.cshtml.g.cs
 C:\Users\LVT3HT613\Desktop\ort\Proyecto NTP DB\CheckLifeWeb\CheckLifeWeb\obj\Debug\netcoreapp3.1\Razor\Views\Medicos\Pacientes.cshtml.g.cs
 C:\Users\LVT3HT613\Desktop\ort\Proyecto NTP DB\CheckLifeWeb\CheckLifeWeb\obj\Debug\netcoreapp3.1\Razor\Views\Medicos\Perfil.cshtml.g.cs
+C:\Users\LVT3HT613\Desktop\ort\Proyecto NTP DB\CheckLifeWeb\CheckLifeWeb\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\edit.cshtml.g.cs

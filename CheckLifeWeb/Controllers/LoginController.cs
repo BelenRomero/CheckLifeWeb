@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CheckLifeWeb.Models;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CheckLifeWeb.Controllers
 {
@@ -44,9 +46,9 @@ namespace CheckLifeWeb.Controllers
                         switch (LoginBuscado.Rol.ID) //Mando el login buscado porque tiene el id de la bd
                         {
                             case 1: //Paciente
-                                return RedirectToActionPreserveMethod("Index", "Pacientes", LoginBuscado);
+                                return RedirectToActionPreserveMethod("LogearUsuario", "Pacientes", LoginBuscado);
                             case 2: //Medico
-                                 return RedirectToActionPreserveMethod("Index", "Medicos", LoginBuscado);
+                                return RedirectToActionPreserveMethod("Index", "Medicos", LoginBuscado);
                             case 3: //Vacunatorio
                                 return RedirectToActionPreserveMethod("Index", "Vacunatorios", LoginBuscado);
                             default:
@@ -60,7 +62,6 @@ namespace CheckLifeWeb.Controllers
             {
                 ViewBag.MsjError = "Error al consultar usuario y contraseña";
             }
-
             return View();
         }
 
@@ -153,7 +154,7 @@ namespace CheckLifeWeb.Controllers
             {
                 if (!UserExists(LoginNuevo.User))
                 {
-                    int idLogin = CrearLogin(LoginNuevo, 1);
+                    int idLogin = CrearLogin(LoginNuevo, 3);
                     CentroVacunacion.LoginID = idLogin;
                     _context.Vacunatorios.Add(CentroVacunacion);
                     _context.SaveChanges();
@@ -214,7 +215,6 @@ namespace CheckLifeWeb.Controllers
             return login.Result.ID;
         }
         
-
         
 
 

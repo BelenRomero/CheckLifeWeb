@@ -28,18 +28,18 @@ namespace CheckLifeWeb.Models
 
         public DateTime FechaNacimiento { get; set; }
 
-        public int NacionalidadID { get; set; }
+        public int? NacionalidadID { get; set; }
         public Nacionalidad Nacionalidad { get; set; }
 
         //[RegularExpres*In("expression")]
         public string Email { get; set; }
 
-        public int LoginID { get; set; }
+        public int? LoginID { get; set; }
         public Login Login { get; set; }
 
         public string Telefono { get; set; }
 
-        public int MedicoCabeceraID { get; set; }
+        public int? MedicoCabeceraID { get; set; }
         public Medico MedicoCabecera { get; set; } //Medico que lo atiende
 
         public ICollection<Vacuna> Vacunas { get; set; }

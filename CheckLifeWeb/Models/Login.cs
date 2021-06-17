@@ -13,15 +13,17 @@ namespace CheckLifeWeb.Models
         [Key]
         public int ID { get; set; }
 
+        [Display(Name = "Nombre de Usuario")]
         public string User { get; set; }/* = 0;*/ //si es centro ingresa por cuit, si es paciente por dni y si es medico por matricula
 
         [MaxLength(8)]
+        [DataType(DataType.Password)]
         public string Password { get; set; } /*= "";*/
 
         [NotMapped]
         public string VerificarPassword { get; set; } /*= "";*/
 
-        public int RolID { get; set; }
+        public int? RolID { get; set; }
         public Rol Rol { get; set; } //Medico, paciente o centro
 
         public Login()

@@ -29,6 +29,8 @@ namespace CheckLifeWeb
 
             services.AddDbContext<CheckLifeBDContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddSession(options => options.IdleTimeout = TimeSpan.FromMinutes(20));
             //services.AddDbContext<CheckLifeBDContext>();
         }
 
@@ -47,6 +49,8 @@ namespace CheckLifeWeb
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 
