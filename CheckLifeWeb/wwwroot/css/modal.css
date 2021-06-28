@@ -1,0 +1,38 @@
+﻿.modal {
+    background-color: #0000007a;
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    padding-top: 50px;
+}
+
+.modal-search {
+    background: white;
+    padding: 30px;
+    border-radius: 5px;
+    width: 700px;
+    margin: 0 auto;
+    border: 3px solid #00b1b9;
+}
+
+.btn.btn-search {
+    background: #00b1b9;
+    border-color: #00b1b9;
+    color: white;
+}
+
+.align-right {
+    padding-top: 5px;
+    text-align: right;
+}
+
+.btn.btn-search:hover {
+    background: #146568;
+    border-color: #146568;
+    color: white;
+}

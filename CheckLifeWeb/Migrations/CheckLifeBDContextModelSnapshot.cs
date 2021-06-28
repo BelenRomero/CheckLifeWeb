@@ -35,6 +35,22 @@ namespace CheckLifeWeb.Migrations
                     b.ToTable("CalendarioVacuna");
                 });
 
+            modelBuilder.Entity("CheckLifeWeb.Models.EstadoVacuna", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(30);
+
+                    b.HasKey("ID");
+
+                    b.ToTable("EstadoVacuna");
+                });
+
             modelBuilder.Entity("CheckLifeWeb.Models.Login", b =>
                 {
                     b.Property<int>("ID")
@@ -46,7 +62,7 @@ namespace CheckLifeWeb.Migrations
                         .HasColumnType("nvarchar(8)")
                         .HasMaxLength(8);
 
-                    b.Property<int>("RolID")
+                    b.Property<int?>("RolID")
                         .HasColumnType("int");
 
                     b.Property<string>("User")
@@ -83,13 +99,13 @@ namespace CheckLifeWeb.Migrations
                     b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("LoginID")
+                    b.Property<int?>("LoginID")
                         .HasColumnType("int");
 
                     b.Property<int>("Matricula")
                         .HasColumnType("int");
 
-                    b.Property<int>("NacionalidadID")
+                    b.Property<int?>("NacionalidadID")
                         .HasColumnType("int");
 
                     b.Property<string>("Nombre")
@@ -149,13 +165,13 @@ namespace CheckLifeWeb.Migrations
                     b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("LoginID")
+                    b.Property<int?>("LoginID")
                         .HasColumnType("int");
 
                     b.Property<int?>("MedicoCabeceraID")
                         .HasColumnType("int");
 
-                    b.Property<int>("NacionalidadID")
+                    b.Property<int?>("NacionalidadID")
                         .HasColumnType("int");
 
                     b.Property<string>("Nombre")
@@ -203,6 +219,9 @@ namespace CheckLifeWeb.Migrations
                     b.Property<int?>("CalendarioVacunaID")
                         .HasColumnType("int");
 
+                    b.Property<int?>("EstadoID")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("FechaAplicada")
                         .HasColumnType("datetime2");
 
@@ -212,7 +231,7 @@ namespace CheckLifeWeb.Migrations
                     b.Property<int>("MatriculaEnfermero")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PacienteID")
+                    b.Property<int>("PacienteID")
                         .HasColumnType("int");
 
                     b.Property<string>("SelloFirma")
@@ -221,6 +240,8 @@ namespace CheckLifeWeb.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("CalendarioVacunaID");
+
+                    b.HasIndex("EstadoID");
 
                     b.HasIndex("PacienteID");
 
@@ -248,7 +269,7 @@ namespace CheckLifeWeb.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<int>("LoginID")
+                    b.Property<int?>("LoginID")
                         .HasColumnType("int");
 
                     b.Property<string>("Nombre")
@@ -270,33 +291,25 @@ namespace CheckLifeWeb.Migrations
                 {
                     b.HasOne("CheckLifeWeb.Models.Rol", "Rol")
                         .WithMany()
-                        .HasForeignKey("RolID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RolID");
                 });
 
             modelBuilder.Entity("CheckLifeWeb.Models.Medico", b =>
                 {
                     b.HasOne("CheckLifeWeb.Models.Login", "Login")
                         .WithMany()
-                        .HasForeignKey("LoginID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LoginID");
 
                     b.HasOne("CheckLifeWeb.Models.Nacionalidad", "Nacionalidad")
                         .WithMany()
-                        .HasForeignKey("NacionalidadID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("NacionalidadID");
                 });
 
             modelBuilder.Entity("CheckLifeWeb.Models.Paciente", b =>
                 {
                     b.HasOne("CheckLifeWeb.Models.Login", "Login")
                         .WithMany()
-                        .HasForeignKey("LoginID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LoginID");
 
                     b.HasOne("CheckLifeWeb.Models.Medico", "MedicoCabecera")
                         .WithMany("Pacientes")
@@ -304,9 +317,7 @@ namespace CheckLifeWeb.Migrations
 
                     b.HasOne("CheckLifeWeb.Models.Nacionalidad", "Nacionalidad")
                         .WithMany()
-                        .HasForeignKey("NacionalidadID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("NacionalidadID");
                 });
 
             modelBuilder.Entity("CheckLifeWeb.Models.Vacuna", b =>
@@ -315,18 +326,22 @@ namespace CheckLifeWeb.Migrations
                         .WithMany()
                         .HasForeignKey("CalendarioVacunaID");
 
+                    b.HasOne("CheckLifeWeb.Models.EstadoVacuna", "Estado")
+                        .WithMany()
+                        .HasForeignKey("EstadoID");
+
                     b.HasOne("CheckLifeWeb.Models.Paciente", "Paciente")
                         .WithMany("Vacunas")
-                        .HasForeignKey("PacienteID");
+                        .HasForeignKey("PacienteID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CheckLifeWeb.Models.Vacunatorio", b =>
                 {
                     b.HasOne("CheckLifeWeb.Models.Login", "Login")
                         .WithMany()
-                        .HasForeignKey("LoginID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LoginID");
                 });
 #pragma warning restore 612, 618
         }

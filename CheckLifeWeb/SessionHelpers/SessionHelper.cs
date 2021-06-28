@@ -7,29 +7,35 @@ namespace CheckLifeWeb.SessionHelpers
 {
     internal class SessionHelper
     {
+
         public bool UsuarioLogueado(ISession session)
         {
             var value = session.GetString("usuario");
-            if (value == null)
-                return false;
+            //if (value == null)
+            //    return false;
 
-            return true;
+            return value == null;
         }
 
         public void SetUsuario(ISession session, Login LoginActual)
         {
-            //Login login = new Login();
-            //login.User = value;
             session.SetString("usuario", JsonConvert.SerializeObject(LoginActual));
         }
 
         public Login GetUsuario(ISession session)
         {
             var value = session.GetString("usuario");
-            if (value == null)
-                return null;
+            return value == null ? null : JsonConvert.DeserializeObject<Login>(value);
+        }
 
-            return JsonConvert.DeserializeObject<Login>(value);
+        public String GetNombreUsuario(ISession session)
+        {
+            var value = session.GetString("usuario");
+            if (value == null) 
+                { return null; }
+
+            Login login = JsonConvert.DeserializeObject<Login>(value);
+            return login.User;
         }
     }
 }

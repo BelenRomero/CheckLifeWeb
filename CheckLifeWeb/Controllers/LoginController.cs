@@ -26,7 +26,7 @@ namespace CheckLifeWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(Login LoginActual)
+        public IActionResult Index(Login LoginActual) //Validaciones antes de logearse y enviarlo a su perfil correspondiente
         {
             if (LoginActual.User != null && LoginActual.Password != null)
             {
@@ -48,9 +48,9 @@ namespace CheckLifeWeb.Controllers
                             case 1: //Paciente
                                 return RedirectToActionPreserveMethod("LogearUsuario", "Pacientes", LoginBuscado);
                             case 2: //Medico
-                                return RedirectToActionPreserveMethod("Index", "Medicos", LoginBuscado);
+                                return RedirectToActionPreserveMethod("LogearUsuario", "Medicos", LoginBuscado);
                             case 3: //Vacunatorio
-                                return RedirectToActionPreserveMethod("Index", "Vacunatorios", LoginBuscado);
+                                return RedirectToActionPreserveMethod("LogearUsuario", "Vacunatorios", LoginBuscado);
                             default:
                                 ViewBag.MsjError = "No se encontro un perfil para el usuario " + LoginActual.User;
                                 break;
@@ -64,6 +64,8 @@ namespace CheckLifeWeb.Controllers
             }
             return View();
         }
+
+        //-------------------------------------------CREACION DE UN NUEVO REGISTRO-------------------------------------------
 
         public IActionResult Registrar()
         {
@@ -177,6 +179,8 @@ namespace CheckLifeWeb.Controllers
             return View();
         }
 
+        //-------------------------------------------FUNCIONES-------------------------------------------
+
         private bool UserExists(string User)
         {
             return _context.Logins.Any(e => e.User == User);
@@ -205,7 +209,7 @@ namespace CheckLifeWeb.Controllers
             return login.Result;
         }
 
-        private int CrearLogin(Login LoginNuevo, int RolID)
+        private int CrearLogin(Login LoginNuevo, int RolID) //Nueva alta de usuario
         {
             //LoginNuevo.Rol = new Rol();
             LoginNuevo.RolID = RolID;
@@ -216,7 +220,5 @@ namespace CheckLifeWeb.Controllers
         }
         
         
-
-
     }
 }

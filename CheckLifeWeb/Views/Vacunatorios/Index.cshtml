@@ -1,7 +1,7 @@
 ﻿@model CheckLifeWeb.Models.Vacunatorio
 
 @{
-    ViewData["Title"] = "Vacunatorio";
+    ViewData["Title"] = "CheckLife";
 }
 
 <!DOCTYPE html>
@@ -9,23 +9,26 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="~/css/general.css">
+    <link rel="stylesheet" href="~/css/modal.css">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script type="text/javascript" src="~/js/modalPaciente.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <title>CheckLife</title>
 </head>
 <body>
-    <div class="content">
-        <h1>aca tiene que ir el buscando</h1>
-    </div>
-    <br />
-    <br />
-
-    <h1>Perfil de vacunatorio</h1>
-    <h2>Centro de Vacunacion @Model.Nombre</h2>
+    @if (ViewBag.MsjError != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @ViewBag.MsjError
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
 
     <div class="card-deck">
         @* CALENDARIO DE VACUNAS *@
@@ -46,12 +49,12 @@
         <div class="card">
             <div class="text-center">
                 <div class="wl-container">
-                    <img src="~/img/Iconos/AgregarVacuna.jpg" alt="Avatar">
-                    <h3 class="wl-text">Agregar Vacuna</h3>
+                    <img src="~/img/Iconos/perfilPaciente.jpg" alt="Avatar">
+                    <h3 class="wl-text">Buscar Paciente</h3>
                 </div>
-                @*<a class="wl-button wl-block wl-color" asp-action="Agregar">
-                    + Connect
-                </a>*@
+                <input type="button"
+                       class="wl-button wl-block wl-color" @*asp-action="Agregar"*@
+                       value="+ Connect" onclick="BuscarPaciente()">
             </div>
         </div>
         @* PERFIL DEL Vacunatorio *@
@@ -59,14 +62,34 @@
             <div class="text-center">
                 <div class="wl-container">
                     <img src="~/img/Iconos/Centro.jpg" alt="Avatar">
-                    <h3 class="wl-text">Datos del Vacunatorio</h3>
+                    <h3 class="wl-text">Perfil</h3>
                 </div>
-                @*<a class="wl-button wl-block wl-color" asp-action="Perfil">
+                <a class="wl-button wl-block wl-color" asp-action="Perfil">
                     + Connect
-                </a>*@
+                </a>
             </div>
         </div>
 
+    </div>
+
+
+
+    <div id="modalBuscar" class="modal">
+        <div class="modal-contenido modal-search">
+            <h2>Buscar Paciente</h2>
+            <div>
+                <form method="post" asp-action="Index" class="form-group row">
+                    <div class="col-sm-12">
+                        <input id="DNI" name="DNI" type="number" class="form-control" placeholder="Buscar paciente por DNI" required>
+                    </div>
+                    <div class="col-sm-12 align-right">
+                        <input type="button" value="Cancelar" id="btnSalir" class="btn btn-default" onclick="CancelarBusqueda()">
+                        <input type="submit" class="btn btn-search col-sm-2" value="Buscar" />
+                    </div>
+
+                </form>
+            </div>
+        </div>
     </div>
 
 

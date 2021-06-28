@@ -33,13 +33,15 @@ namespace CheckLifeWeb.Controllers
             return View();
         }
 
+        //-------------------------------------------SECCION------------------------------------------------------------------------
         [AllowAnonymous]
         public IActionResult LogearUsuario(Login LoginActual)
         {
+            LoginActual.Password = null;
             s.SetUsuario(HttpContext.Session, LoginActual);
             return RedirectToAction("Index");
         }
-
+        //-------------------------------------------PERFIL PACIENTE-----------------------------------------------------------------
         public IActionResult Perfil()
         {
             Login LoginActual = s.GetUsuario(HttpContext.Session);
@@ -47,20 +49,95 @@ namespace CheckLifeWeb.Controllers
             return View(Paciente);
         }
 
+        public async Task<IActionResult> Modificar(int ? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var Paciente = await _context.Pacientes.FindAsync(id);
+            Login LoginS = s.GetUsuario(HttpContext.Session);
+            Paciente.Login = LoginS;
+            Paciente.User = LoginS.User;
+            Paciente.Password = LoginS.Password;
+
+            ViewBag.Nacionalidades = _context.Nacionalidades.ToList();
+            ViewData["MedicoCabeceraID"] = new SelectList(_context.Medicos, "ID", "Apellido", Paciente.MedicoCabeceraID);
+
+            return View(Paciente);
+        }
+
+        public async Task<IActionResult> Guardar(int id, [Bind("ID,DNI,Nombre,Apellido,Edad,FechaNacimiento,NacionalidadID,Email,LoginID,User,Password,Telefono,MedicoCabeceraID")] Paciente paciente)
+        {
+            if (id != paciente.ID)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(paciente);
+                    await _context.SaveChangesAsync();
+
+                    if (paciente.Password != null)
+                    {
+                        Login login = s.GetUsuario(HttpContext.Session);
+                        login.Password = paciente.Password;
+                        //login.User = paciente.User;
+                        _context.Update(login);
+                        await _context.SaveChangesAsync();
+                        //s.SetUsuario(HttpContext.Session, login);
+                    }
+
+
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!PacienteExists(paciente.ID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction("Perfil");
+            }
+            ViewBag.MsjError = "Error al guardar, verificar los datos modificados";
+            return RedirectToAction("Modificar", paciente);
+        }
+
+        //-------------------------------------------LISTA DE VACUNAS APLICADAS Y PENDIENTES-------------------------------------------
         public async Task<IActionResult> Vacunas()
         {
-            Login LoginActual = s.GetUsuario(HttpContext.Session);
+            int id = BuscarID(s.GetUsuario(HttpContext.Session).ID);
             return View(await _context.Vacunas
-                .FirstOrDefaultAsync(m => m.Paciente.ID == LoginActual.ID));
+                                        .Include("Estado")
+                                        .Include("CalendarioVacuna")
+                                        .Where(m => m.PacienteID == id )
+                                        .ToListAsync());
         }
-       
 
+        //-------------------------------------------FUNCIONES------------------------------------------------------------------------
         private Paciente BuscarInfoPaciente(int LoginID)
         {
             var paciente = _context.Pacientes
                 .Include("Login")
+                .Include("Nacionalidad")
+                .Include("MedicoCabecera")
                 .FirstOrDefaultAsync(m => m.Login.ID == LoginID);
             return paciente.Result;
+        }
+
+        private int BuscarID(int LoginID)
+        {
+            var paciente = _context.Pacientes
+                .FirstOrDefaultAsync(m => m.Login.ID == LoginID);
+            return paciente.Result.ID;
         }
 
         private Paciente BuscarInfoPacientePorID(int ID)
@@ -68,6 +145,11 @@ namespace CheckLifeWeb.Controllers
             var paciente = _context.Pacientes.
                 FirstOrDefaultAsync(m => m.ID == ID);
             return paciente.Result;
+        }
+
+        private bool PacienteExists(int id)
+        {
+            return _context.Pacientes.Any(e => e.ID == id);
         }
     }
 }

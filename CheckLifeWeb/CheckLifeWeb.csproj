@@ -12,13 +12,18 @@
 
   <ItemGroup>
     <Compile Remove="Views\PacientesPrueba\**" />
+    <Compile Remove="Views\Prueba\**" />
     <Content Remove="Views\PacientesPrueba\**" />
+    <Content Remove="Views\Prueba\**" />
     <EmbeddedResource Remove="Views\PacientesPrueba\**" />
+    <EmbeddedResource Remove="Views\Prueba\**" />
     <None Remove="Views\PacientesPrueba\**" />
+    <None Remove="Views\Prueba\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Controllers\PacientesPruebaController.cs" />
+    <Compile Remove="Controllers\PruebaController.cs" />
     <Compile Remove="Migrations\20210607205208_Migracion20210607_1752.cs" />
     <Compile Remove="Migrations\20210607205208_Migracion20210607_1752.Designer.cs" />
     <Compile Remove="Migrations\20210607205519_Migracion20210607_1754.cs" />
@@ -32,6 +37,16 @@
     <Compile Remove="Migrations\20210608142321_Migracion20210608_1125.cs" />
     <Compile Remove="Migrations\20210608142321_Migracion20210608_1125.Designer.cs" />
     <Compile Remove="Models\Enfermero.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Medicos\InfoPaciente.cshtml" />
+    <Content Remove="Views\Medicos\Modificar.cshtml" />
+    <Content Remove="Views\Medicos\Vacunas.cshtml" />
+    <Content Remove="Views\Pacientes\Modificar.cshtml" />
+    <Content Remove="Views\Vacunatorios\Modificar.cshtml" />
+    <Content Remove="Views\Vacunatorios\Paciente.cshtml" />
+    <Content Remove="Views\Vacunatorios\Vacunas.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -53,13 +68,20 @@
     <None Include="Views\Login\RegistrarPaciente.cshtml" />
     <None Include="Views\Login\RegistrarVacunatorio.cshtml" />
     <None Include="Views\Medicos\Index.cshtml" />
-    <None Include="Views\Medicos\Pacientes.cshtml" />
+    <None Include="Views\Medicos\Modificar.cshtml" />
+    <None Include="Views\Medicos\Paciente.cshtml" />
     <None Include="Views\Medicos\Perfil.cshtml" />
+    <None Include="Views\Medicos\Vacunas.cshtml" />
     <None Include="Views\Pacientes\Index.cshtml" />
+    <None Include="Views\Pacientes\Modificar.cshtml" />
     <None Include="Views\Pacientes\Perfil.cshtml" />
     <None Include="Views\Pacientes\Vacunas.cshtml" />
     <None Include="Views\Vacunatorios\CentrosDeVacunacion.cshtml" />
     <None Include="Views\Vacunatorios\Index.cshtml" />
+    <None Include="Views\Vacunatorios\Modificar.cshtml" />
+    <None Include="Views\Vacunatorios\Paciente.cshtml" />
+    <None Include="Views\Vacunatorios\Perfil.cshtml" />
+    <None Include="Views\Vacunatorios\Vacunas.cshtml" />
     <None Include="wwwroot\img\container\cronograma-de-vacunacion.webp" />
   </ItemGroup>
 

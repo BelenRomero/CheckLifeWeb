@@ -1,0 +1,133 @@
+﻿@model CheckLifeWeb.Models.Paciente
+
+@{
+    ViewData["Title"] = "Modificar Perfil";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/general.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="container ">
+        <div class="bg-1 text-center">
+            <img src="~/Img/Iconos/perfilPaciente.jpg" class="img-circle" alt="Bird" width="150" height="150">
+            <div class="divTitulos">
+                <h2>Modificar Perfil</h2>
+            </div>
+        </div>
+        <br />
+        @if (ViewBag.MsjError != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @ViewBag.MsjError
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        <div>
+            <div class="login-screen">
+                <div>
+                    <form asp-action="Guardar">
+
+                        <input type="hidden" asp-for="ID" />
+                        <input type="hidden" asp-for="LoginID" />
+
+                        <div class="form-group">
+                            <label asp-for="Nombre" class="control-label"></label>
+                            <input asp-for="Nombre" class="form-control" type="text" />
+                            <span asp-validation-for="Nombre" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Apellido" class="control-label"></label>
+                            <input asp-for="Apellido" class="form-control" type="text" />
+                            <span asp-validation-for="Apellido" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="DNI" class="control-label"></label>
+                            <input asp-for="DNI" class="form-control" type="number" />
+                            <span asp-validation-for="DNI" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="FechaNacimiento" class="control-label">Fecha de Nacimiento</label>
+                            <input asp-for="FechaNacimiento" class="form-control" type="date" />
+                            <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Edad" class="control-label"></label>
+                            <input asp-for="Edad" class="form-control" type="number" />
+                            <span asp-validation-for="Edad" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Nacionalidad</label>
+                            <select asp-for="NacionalidadID" class="form-control" asp-items="@(new SelectList(ViewBag.Nacionalidades, "ID", "Descripcion"))"></select>
+                            <span asp-validation-for="NacionalidadID" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Telefono" class="control-label"></label>
+                            <input asp-for="Telefono" class="form-control" type="tel" />
+                            <span asp-validation-for="Telefono" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" type="email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Usuario</label>
+                            <input asp-for="User" class="form-control" type="text" readonly /> @*readonly ->porque sino se va a tener que volver a validar*@
+                            <span asp-validation-for="User" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Contraseña</label>
+                            <input asp-for="Password" class="form-control" type="password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            @*para relacionar un medico con el paciente actual*@
+                            <label asp-for="MedicoCabeceraID" class="control-label">Medico</label>
+                            <select asp-for="MedicoCabeceraID" class="form-control" asp-items="ViewBag.MedicoCabeceraID"></select>
+                            <span asp-validation-for="MedicoCabeceraID" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit"
+                                   class="btn btn-primary btn-lg disabled"
+                                   role="button"
+                                   aria-disabled="true"
+                                   value="Guardar" />
+                        </div>
+                    </form>
+                </div>
+
+                <div class="text-center">
+                    <a asp-action="Perfil">Volver</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

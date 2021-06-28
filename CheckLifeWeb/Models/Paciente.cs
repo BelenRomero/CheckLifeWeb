@@ -41,6 +41,11 @@ namespace CheckLifeWeb.Models
 
         public int? MedicoCabeceraID { get; set; }
         public Medico MedicoCabecera { get; set; } //Medico que lo atiende
+        
+        [NotMapped]
+        public string Password { get; set; } /*= "";*/
+        [NotMapped]
+        public string User { get; set; }
 
         public ICollection<Vacuna> Vacunas { get; set; }
     }

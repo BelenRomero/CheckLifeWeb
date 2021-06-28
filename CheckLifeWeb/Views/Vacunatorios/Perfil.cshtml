@@ -1,0 +1,99 @@
+﻿@model CheckLifeWeb.Models.Vacunatorio
+
+@{
+    ViewData["Title"] = "Perfil";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/general.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="container row">
+        <div class="col-md-12 divTitulos">
+            <h2>Perfil</h2>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3 text-center">
+            <img src="/img/Iconos/Centro.jpg" class="img-circle" alt="Bird" width="150" height="150">
+        </div>
+
+        <div class="col-md-6">
+            <div class="login-screen">
+                <div>
+                    <form asp-action="Modificar" asp-route-id="@Model.ID">
+
+                        <dl class="row">
+
+                            <dt class="col-sm-6">
+                                Nombre
+                            </dt>
+                            <dd class="col-sm-6">
+                                @Html.DisplayFor(model => model.Nombre)
+                            </dd>
+
+                            <dt class="col-sm-6">
+                                CUIT
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.CUIT)
+                            </dd>
+
+                            <dt class="col-sm-6">
+                                Direccion
+                            </dt>
+                            <dd class="col-sm-6">
+                                @Html.DisplayFor(model => model.Direccion)
+                            </dd>
+
+                            <dt class="col-sm-6">
+                                Localidad
+                            </dt>
+                            <dd class="col-sm-6">
+                                @Html.DisplayFor(model => model.Localidad)
+                            </dd>
+
+                            <dt class="col-sm-6">
+                                Telefono
+                            </dt>
+                            <dd class="col-sm-6">
+                                @Html.DisplayFor(model => model.Telefono)
+                            </dd>
+
+                            <dt class="col-sm-6">
+                                Email
+                            </dt>
+                            <dd class="col-sm-6">
+                                @Html.DisplayFor(model => model.Email)
+                            </dd>
+
+                        </dl>
+
+                        <div class="form-group">
+                            <input type="submit"
+                                   class="btn btn-primary btn-lg disabled" role="button" aria-disabled="true"
+                                   value="Modificar" />
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-12 text-center">
+            <a asp-action="Index">Volver</a>
+        </div>
+    </div>
+
+</body>
+</html>

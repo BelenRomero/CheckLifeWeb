@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QMieRhE3FzHXd1aoFiZTSZ5JxY+wHF+O9VxLTQRA7vHBrYAI9+dDQ+2Vd8TgGqmGIpGB+u63FFt9d92unOClOg==",
+  "dgSpecHash": "kUWqwczaSbnpCNmgO692m+lk3TOSyAIrEowejFN5BjlgGol7BviCpSWj3i+cuaraRYXxuEZz45qP4mZeUriv6Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\LVT3HT613\\Desktop\\ort\\Proyecto NTP DB\\CheckLifeWeb\\CheckLifeWeb\\CheckLifeWeb.csproj",
+  "projectFilePath": "C:\\Users\\LVT3HT613\\Desktop\\ort\\Proyecto NTP DB - FINAL\\CheckLifeWeb\\CheckLifeWeb\\CheckLifeWeb.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LVT3HT613\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\LVT3HT613\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\3.1.15\\microsoft.aspnetcore.mvc.razor.extensions.3.1.15.nupkg.sha512",

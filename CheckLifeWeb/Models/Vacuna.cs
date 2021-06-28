@@ -22,6 +22,11 @@ namespace CheckLifeWeb.Models
 
         public int MatriculaEnfermero { get; set; }
 
+        public int PacienteID { get; set; }
         public Paciente Paciente { get; set; }
+
+        public int? EstadoID { get; set; }
+        public EstadoVacuna Estado { get; set; }
+
     }
 }

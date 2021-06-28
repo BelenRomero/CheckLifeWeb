@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<CheckLifeWeb.Models.Paciente>
 @{
-    ViewData["Title"] = "Paciente";
+    ViewData["Title"] = "Pacientes";
 }
 
 <!DOCTYPE html>
@@ -8,13 +8,15 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="~/css/general.css">
+    <link rel="stylesheet" href="~/css/iconosTabla.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <title>Pacientes</title>
 </head>
 <body>
 
@@ -22,24 +24,25 @@
         <div class="bg-1 text-center">
             <img src="~/Img/Iconos/pacientes.jpg" class="img-circle" alt="Bird" width="150" height="150">
             <div class="divTitulos">
-                <h2>Pacientes Vinculados</h2>
+                <h2>Paciente/s</h2>
             </div>
         </div>
         <br />
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">DNI</th>
-                    <th scope="col">Apellido y Nombre</th>
-                    <th scope="col">Fecha Nacimiento</th>
-                    <th scope="col">Nacionalidad</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Ver Mas</th>
-                    <th scope="col">Desvincular</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
+        @if (Model != null)
+        {
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">DNI</th>
+                        <th scope="col">Apellido y Nombre</th>
+                        <th scope="col">Fecha Nacimiento</th>
+                        <th scope="col">Nacionalidad</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Ver Vacunas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
                     {
                         <tr>
                             <td> @Html.DisplayFor(modelItem => item.DNI) </td>
@@ -47,14 +50,25 @@
                             <td> @Html.DisplayFor(modelItem => item.FechaNacimiento) </td>
                             <td> @Html.DisplayFor(modelItem => item.Nacionalidad.Descripcion) </td>
                             <td> @Html.DisplayFor(modelItem => item.Email) </td>
-                            <td><a asp-action="VerMas" asp-route-id="@item.ID">Details</a></td>
-                            <td><a asp-action="Delete" asp-route-id="@item.ID">Delete</a></td>
+                            <td>
+                                <a class="btn-syringe" asp-action="Vacunas" asp-route-id="@item.ID"><i class="fa fa-syringe"></i></a>
+                            </td>
                         </tr>
                     }
-            </tbody>
-        </table>
 
+
+
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                No se encontro un registro de pacientes
+            </div>
+        }
     </div>
-        <div class="text-center"><a asp-action="Index">Volver</a></div>
+    
+    <div class="text-center"><a asp-action="Index">Volver</a></div>
 </body>
 </html>

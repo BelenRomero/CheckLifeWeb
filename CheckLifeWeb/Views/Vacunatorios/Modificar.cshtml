@@ -1,0 +1,118 @@
+﻿@model CheckLifeWeb.Models.Vacunatorio
+
+@{
+    ViewData["Title"] = "Modificar Perfil";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/general.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="container ">
+        <div class="bg-1 text-center">
+            <img src="~/img/Iconos/Centro.jpg" class="img-circle" alt="Bird" width="150" height="150">
+            <div class="divTitulos">
+                <h2>Modificar Perfil</h2>
+            </div>
+        </div>
+        <br />
+
+        @if (ViewBag.MsjError != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @ViewBag.MsjError
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        
+        <div>
+            <div class="login-screen">
+                <div>
+                    <form asp-action="Guardar">
+
+                        <input type="hidden" asp-for="ID" />
+                        <input type="hidden" asp-for="LoginID" />
+
+                        <div class="form-group">
+                            <label asp-for="Nombre" class="control-label"></label>
+                            <input asp-for="Nombre" class="form-control" type="text" />
+                            <span asp-validation-for="Nombre" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="CUIT" class="control-label"></label>
+                            <input asp-for="CUIT" class="form-control" type="number" />
+                            <span asp-validation-for="CUIT" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label asp-for="Direccion" class="control-label"></label>
+                            <input asp-for="Direccion" class="form-control" type="text" />
+                            <span asp-validation-for="Direccion" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Localidad" class="control-label"></label>
+                            <input asp-for="Localidad" class="form-control" type="text" />
+                            <span asp-validation-for="Localidad" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Telefono" class="control-label"></label>
+                            <input asp-for="Telefono" class="form-control" type="tel" />
+                            <span asp-validation-for="Telefono" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" type="email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Usuario</label>
+                            <input asp-for="User" class="form-control" type="text" readonly /> @*readonly ->porque sino se va a tener que volver a validar*@
+                            <span asp-validation-for="User" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Contraseña</label>
+                            <input asp-for="Password" class="form-control" type="password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="form-group">
+                            <input type="submit"
+                                   class="btn btn-primary btn-lg disabled"
+                                   role="button"
+                                   aria-disabled="true"
+                                   value="Guardar" />
+                        </div>
+                    </form>
+                </div>
+
+                <div class="text-center">
+                    <a asp-action="Perfil">Volver</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

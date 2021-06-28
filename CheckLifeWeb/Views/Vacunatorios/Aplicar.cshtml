@@ -1,0 +1,89 @@
+﻿@model CheckLifeWeb.Models.Vacuna
+
+@{
+    ViewData["Title"] = "Aplicar Vacuna";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/general.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="container ">
+        <div class="bg-1 text-center">
+            <img src="~/Img/Iconos/AgregarVacuna.jpg" class="img-circle" alt="Bird" width="150" height="150">
+            <div class="divTitulos">
+                <h2>@ViewData["Title"] </h2>
+                <h4> @Model.CalendarioVacuna.Descripcion </h4>
+            </div>
+        </div>
+        <br />
+        @if (ViewBag.MsjError != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @ViewBag.MsjError
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        <div>
+            <div class="login-screen">
+                <div>
+                    <form method="post" asp-action="Aplicar">
+                        <input type="hidden" asp-for="ID" />
+                        <input type="hidden" asp-for="PacienteID" />
+                        <input type="hidden" asp-for="CalendarioVacunaID" />
+
+                        @*<div class="form-group">
+                            <label asp-for="FechaAplicada" class="control-label"></label>
+                            <input asp-for="FechaAplicada" class="form-control" />
+                            <span asp-validation-for="FechaAplicada" class="text-danger"></span>
+                        </div>*@
+
+                        <div class="form-group">
+                            <label asp-for="MarcaComercialLote" class="control-label">Marca Comercial o Lote</label>
+                            <input asp-for="MarcaComercialLote" class="form-control" type="text" required>
+                            <span asp-validation-for="MarcaComercialLote" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SelloFirma" class="control-label">Sello y Firma</label>
+                            <input asp-for="SelloFirma" class="form-control" type="text" required/>
+                            <span asp-validation-for="SelloFirma" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MatriculaEnfermero" class="control-label">Matricula</label>
+                            <input asp-for="MatriculaEnfermero" class="form-control" type="number" required/>
+                            <span asp-validation-for="MatriculaEnfermero" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit"
+                                   class="btn btn-primary btn-lg disabled"
+                                   role="button"
+                                   aria-disabled="true"
+                                   value="Guardar" />
+                        </div>
+                    </form>
+                </div>
+
+                <div class="text-center">
+                    <a asp-action="Pendientes" asp-route-id="@Model.PacienteID">Volver</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -21,13 +21,13 @@ namespace CheckLifeWeb.Models
 
         public DbSet<Rol> Rols { get; set; }
         public DbSet<Vacunatorio> Vacunatorios { get; set; } //Centro de Vacunacion
-        //public DbSet<Enfermero> Enfermeros { get; set; }
         public DbSet<Nacionalidad> Nacionalidades { get; set; }
         public DbSet<Login> Logins { get; set; }
         public DbSet<CalendarioVacuna> CalendarioVacunas { get; set; }
         public DbSet<Vacuna> Vacunas { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<Medico> Medicos { get; set; }
+        public DbSet<EstadoVacuna> EstadoVacuna { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

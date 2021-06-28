@@ -37,6 +37,11 @@ namespace CheckLifeWeb.Models
         public int? LoginID { get; set; }
         public Login Login { get; set; }
 
+        [NotMapped]
+        public string Password { get; set; } /*= "";*/
+        [NotMapped]
+        public string User { get; set; }
+
         public string Telefono { get; set; }
 
         public int Matricula { get; set; }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LVT3HT613\\Desktop\\ort\\Proyecto NTP DB\\CheckLifeWeb\\CheckLifeWeb\\CheckLifeWeb.csproj": {}
+    "C:\\Users\\LVT3HT613\\Desktop\\ort\\Proyecto NTP DB - FINAL\\CheckLifeWeb\\CheckLifeWeb\\CheckLifeWeb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LVT3HT613\\Desktop\\ort\\Proyecto NTP DB\\CheckLifeWeb\\CheckLifeWeb\\CheckLifeWeb.csproj": {
+    "C:\\Users\\LVT3HT613\\Desktop\\ort\\Proyecto NTP DB - FINAL\\CheckLifeWeb\\CheckLifeWeb\\CheckLifeWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LVT3HT613\\Desktop\\ort\\Proyecto NTP DB\\CheckLifeWeb\\CheckLifeWeb\\CheckLifeWeb.csproj",
+        "projectUniqueName": "C:\\Users\\LVT3HT613\\Desktop\\ort\\Proyecto NTP DB - FINAL\\CheckLifeWeb\\CheckLifeWeb\\CheckLifeWeb.csproj",
         "projectName": "CheckLifeWeb",
-        "projectPath": "C:\\Users\\LVT3HT613\\Desktop\\ort\\Proyecto NTP DB\\CheckLifeWeb\\CheckLifeWeb\\CheckLifeWeb.csproj",
+        "projectPath": "C:\\Users\\LVT3HT613\\Desktop\\ort\\Proyecto NTP DB - FINAL\\CheckLifeWeb\\CheckLifeWeb\\CheckLifeWeb.csproj",
         "packagesPath": "C:\\Users\\LVT3HT613\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LVT3HT613\\Desktop\\ort\\Proyecto NTP DB\\CheckLifeWeb\\CheckLifeWeb\\obj\\",
+        "outputPath": "C:\\Users\\LVT3HT613\\Desktop\\ort\\Proyecto NTP DB - FINAL\\CheckLifeWeb\\CheckLifeWeb\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\LVT3HT613\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -81,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

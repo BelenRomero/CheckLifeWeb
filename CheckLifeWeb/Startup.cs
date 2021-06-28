@@ -30,7 +30,11 @@ namespace CheckLifeWeb
             services.AddDbContext<CheckLifeBDContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddSession(options => options.IdleTimeout = TimeSpan.FromMinutes(20));
+            services.AddSession(
+                options => options.IdleTimeout = TimeSpan.FromMinutes(20)
+            );
+
+
             //services.AddDbContext<CheckLifeBDContext>();
         }
 
@@ -50,12 +54,14 @@ namespace CheckLifeWeb
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseSession();
-
+            //El orden del middleware es importante.
+            //Llame a UseSession después de llamar a UseRouting y
+            //antes de la llamada a UseEndpoints.
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
+            app.UseSession();
+            //
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

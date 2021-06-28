@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<CheckLifeWeb.Models.Vacuna>
 @{
-    ViewData["Title"] = "Vacunas Aplicadas";
+    ViewData["Title"] = "Vacunas";
 }
 
 <!DOCTYPE html>
@@ -14,7 +14,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <title>Vacunas Aplicadas</title>
 </head>
 <body>
 
@@ -26,18 +25,24 @@
             </div>
         </div>
         <br />
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Vacuna</th>
-                    <th scope="col">Fecha de Aplicacion</th>
-                    <th scope="col">Marca Comercial o Lote</th>
-                    <th scope="col">Sello y Firma</th>
-                    <th scope="col">Matricula</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
+        @if (Model != null )
+        {
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Vacuna</th>
+                        <th scope="col">Fecha de Aplicacion</th>
+                        <th scope="col">Marca Comercial o Lote</th>
+                        <th scope="col">Sello y Firma</th>
+                        <th scope="col">Matricula</th>
+                        <th scope="col">Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    
+
+                    @foreach (var item in Model)
                     {
                         <tr>
                             <td> @Html.DisplayFor(modelItem => item.CalendarioVacuna.Descripcion) </td>
@@ -45,11 +50,22 @@
                             <td> @Html.DisplayFor(modelItem => item.MarcaComercialLote) </td>
                             <td> @Html.DisplayFor(modelItem => item.SelloFirma) </td>
                             <td> @Html.DisplayFor(modelItem => item.MatriculaEnfermero) </td>
+                            <td> @Html.DisplayFor(modelItem => item.Estado.Descripcion) </td>
+
                         </tr>
                     }
-            </tbody>
-        </table>
 
+
+
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                No se encontro un registro de vacunas
+            </div>
+        }
     </div>
         <div class="text-center"><a asp-action="Index">Volver</a></div>
 </body>

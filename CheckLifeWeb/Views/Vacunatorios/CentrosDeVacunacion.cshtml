@@ -16,12 +16,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <title>Centros de Vacunacion</title>
 </head>
 <body>
     <div class="divTitulos">
         <h2>Centros de Vacunacion</h2>
     </div>
+    @if (Model != null)
+    {
         @foreach (var item in Model)
         {
             <div class="card mb-3" @*style="max-width: 540px;"*@>
@@ -42,6 +43,14 @@
                 </div>
             </div>
         }
+    }
+    else
+    {
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            No se encontro un registro de centro de vacunas
+        </div>
+    }
+    <div class="text-center"><a asp-controller="Home" asp-action="Index">Inicio</a></div>
 
 </body>
 </html>
